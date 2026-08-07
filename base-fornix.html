@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base FORNIX — Sua área de acesso</title>
+<meta name="description" content="Sua Base FORNIX liberada: busque, filtre e consulte os 1.019 fornecedores do Brás com WhatsApp, Instagram e site — direto aqui, sem precisar abrir o Excel.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="produto.css">
+</head>
+<body>
+
+<canvas id="bgChart" aria-hidden="true"></canvas>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__brand" aria-label="FORNIX — página inicial">
+      <svg width="30" height="30" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="url(#navGrad)"/>
+        <path d="M18 22h28M18 32h28M18 42h18" stroke="#F4F7FF" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="42" r="3.5" fill="#16C784"/>
+        <defs><linearGradient id="navGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2F5FFF"/><stop offset="100%" stop-color="#0B1220"/>
+        </linearGradient></defs>
+      </svg>
+      <span>FORNIX</span>
+    </a>
+    <nav class="nav__links" aria-label="Navegação principal">
+      <a href="#base">Buscar fornecedores</a>
+      <a href="#numeros">Painéis</a>
+      <a href="#abas">Abas da planilha</a>
+      <a href="#faq">Perguntas</a>
+    </nav>
+    <a href="Fornix_Base_Mestra_Fornecedores.xlsx" download class="btn btn--nav" data-cta="nav-download">Baixar planilha</a>
+  </div>
+</header>
+
+<!-- breadcrumb -->
+<div class="subnav">
+  <div class="container subnav__inner">
+    <a href="index.html">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      FORNIX
+    </a>
+    <span class="subnav__sep">/</span>
+    <span class="subnav__current">Sua Base — Área de acesso</span>
+  </div>
+</div>
+
+<main id="topo">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero hero--produto" aria-label="Apresentação do entregável">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy" data-reveal="fade-right">
+      <span class="file-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#2F5FFF" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="#2F5FFF" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Fornix_Base_Mestra_Fornecedores.xlsx
+      </span>
+
+      <h1 class="hero__title">Sua Base FORNIX está pronta. <span class="grad-text">Busque e chame agora.</span></h1>
+      <p class="hero__subtitle">Consulte aqui mesmo os <strong>1.019 fornecedores únicos</strong> dos principais polos do Brás — filtre por categoria ou polo e abra o WhatsApp com um clique. Prefere trabalhar no Excel? A planilha completa também está liberada para download.</p>
+
+      <div class="hero__actions">
+        <a href="#base" class="btn btn--primary btn--lg" data-cta="hero-buscar">
+          <span>Buscar fornecedores</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="Fornix_Base_Mestra_Fornecedores.xlsx" download class="hero__hint hero__hint--link" data-cta="hero-download">Baixar planilha .xlsx →</a>
+      </div>
+
+      <div class="hero__stats-inline">
+        <div><strong class="counter" data-target="1019">1019</strong><span>Fornecedores únicos</span></div>
+        <div><strong class="counter" data-target="6">6</strong><span>Polos mapeados</span></div>
+        <div><strong class="counter" data-target="22">22</strong><span>Categorias</span></div>
+        <div><strong class="counter" data-target="95">95</strong><span>% com WhatsApp direto</span></div>
+      </div>
+    </div>
+
+    <div class="hero__visual" data-reveal="fade-left">
+      <div class="sheet-window tilt" id="dashCard">
+        <div class="sheet-window__bar">
+          <div class="sheet-window__dots"><span></span><span></span><span></span></div>
+          <span class="sheet-window__title">Fornix_Base_Mestra_Fornecedores.xlsx</span>
+        </div>
+        <div class="sheet-window__tabs">
+          <span class="is-active">Capa</span><span>Como Usar</span><span>Painel Categoria</span><span>Painel Polo</span><span>Base Completa</span><span>Total Brás</span><span>Pagé</span><span>+4</span>
+        </div>
+        <div class="dash-card__rows" id="dashRows">
+          <div class="dash-row"><span class="dot" style="--c:#2F5FFF"></span><span>Galeria Pagé</span><span class="mono">287</span></div>
+          <div class="dash-row"><span class="dot" style="--c:#16C784"></span><span>Shopping Total Brás</span><span class="mono">255</span></div>
+          <div class="dash-row"><span class="dot" style="--c:#7C5CFF"></span><span>Shopping Canindé</span><span class="mono">193</span></div>
+          <div class="dash-row"><span class="dot" style="--c:#2F5FFF"></span><span>Shopping Porto Brás</span><span class="mono">157</span></div>
+          <div class="dash-row dash-row--ghost"><span class="dot" style="--c:#94A3B8"></span><span>+ 2 polos, 127 lojas</span><span class="mono">···</span></div>
+        </div>
+      </div>
+      <div class="float-chip float-chip--top" aria-hidden="true">
+        <span class="mono">0</span> erros de fórmula
+      </div>
+      <div class="float-chip float-chip--bottom" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#16C784" stroke-width="2" stroke-linecap="round"/></svg>
+        Deduplicada e verificada
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABAS (o que você recebe) ===================== -->
+<section class="beneficios" id="abas" aria-label="O que você recebe">
+  <div class="container">
+    <p class="eyebrow" data-reveal="fade-up">O que você recebe</p>
+    <h2 class="section-title" data-reveal="fade-up">11 abas, cada uma com <span class="grad-text">um trabalho específico</span>.</h2>
+
+    <div class="cards-grid">
+      <div class="tab-card" data-reveal="fade-up">
+        <span class="tab-card__badge">Início</span>
+        <span class="tab-card__index">Aba 01</span>
+        <h3>Capa</h3>
+        <p>Resumo executivo com total de fornecedores, polos mapeados e data de atualização — a primeira coisa que você vê ao abrir o arquivo.</p>
+      </div>
+      <div class="tab-card" data-reveal="fade-up">
+        <span class="tab-card__index">Aba 02</span>
+        <h3>Como Usar</h3>
+        <p>Passo a passo de abordagem no WhatsApp, checklist antes de fechar pedido e os avisos importantes sobre a base.</p>
+      </div>
+      <div class="tab-card" data-reveal="fade-up">
+        <span class="tab-card__badge">Dashboard</span>
+        <span class="tab-card__index">Aba 03</span>
+        <h3>Painel por Categoria</h3>
+        <p>Ranking com fórmulas automáticas mostrando onde há mais fornecedores — Moda Feminina, Eletrônicos, Acessórios e mais 19 categorias.</p>
+      </div>
+      <div class="tab-card" data-reveal="fade-up">
+        <span class="tab-card__badge">Dashboard</span>
+        <span class="tab-card__index">Aba 04</span>
+        <h3>Painel por Polo</h3>
+        <p>Comparativo entre os 6 polos mapeados, para você decidir por onde começar a prospecção.</p>
+      </div>
+      <div class="tab-card" data-reveal="fade-up">
+        <span class="tab-card__badge">Principal</span>
+        <span class="tab-card__index">Aba 05</span>
+        <h3>Base Completa</h3>
+        <p>Os 1.019 fornecedores em uma única tabela filtrável, com WhatsApp, Instagram e site como links clicáveis.</p>
+      </div>
+      <div class="tab-card" data-reveal="fade-up">
+        <span class="tab-card__index">Abas 06–11</span>
+        <h3>Uma aba por polo</h3>
+        <p>Total Brás, Pagé, Canindé, Porto Brás, All Brás e O Melhor do Brás — cada polo já separado, pronto para uma visita direcionada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA INTERMEDIÁRIA ===================== -->
+<section class="cta-strip" aria-label="Ir para o buscador">
+  <div class="container cta-strip__inner" data-reveal="fade-up">
+    <div class="cta-strip__copy">
+      <span class="cta-strip__badge"><span class="cta-strip__pulse" aria-hidden="true"></span>Base liberada</span>
+      <h3>Nada de rolar planilha atrás de fornecedor.</h3>
+      <p>Mais abaixo você filtra por categoria e polo, e o link do WhatsApp abre com um clique — sem precisar abrir o Excel.</p>
+    </div>
+    <a href="#base" class="btn btn--primary btn--lg" data-cta="meio-buscar">
+      <span>Ir para a busca</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== NÚMEROS ===================== -->
+<section class="solucao" id="numeros" aria-label="Os números da base">
+  <div class="hero__grid hero__grid--dark" aria-hidden="true"></div>
+  <div class="container">
+    <p class="eyebrow eyebrow--light" data-reveal="fade-up">Por dentro dos dados</p>
+    <h2 class="section-title section-title--light" data-reveal="fade-up">Não é achismo. É <span class="grad-text">planilha com fórmula</span>.</h2>
+    <p class="solucao__text" data-reveal="fade-up">Cada número abaixo é calculado direto na planilha com COUNTIF — se um fornecedor for adicionado ou removido, os painéis se atualizam sozinhos.</p>
+
+    <div class="panels-grid" style="margin-top:48px;">
+      <div class="rank-panel tilt" data-reveal="fade-up">
+        <div class="rank-panel__head">
+          <h3>Fornecedores por categoria</h3>
+          <span>Top 8 de 22</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Moda Feminina</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="100"></div></div>
+          <span class="rank-row__val">482</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Eletrônicos e Celulares</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="24"></div></div>
+          <span class="rank-row__val">115</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Moda Fem. Plus Size</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="16"></div></div>
+          <span class="rank-row__val">75</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Acessórios e Bijuterias</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="13"></div></div>
+          <span class="rank-row__val">65</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Moda Jeans</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="11"></div></div>
+          <span class="rank-row__val">52</span>
+        </div>
+        <div class="rank-row rank-row--muted">
+          <span class="rank-row__label">Perfumaria/Cosméticos</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="6"></div></div>
+          <span class="rank-row__val">31</span>
+        </div>
+        <div class="rank-row rank-row--muted">
+          <span class="rank-row__label">Relógios e Óculos</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="6"></div></div>
+          <span class="rank-row__val">31</span>
+        </div>
+        <div class="rank-row rank-row--muted">
+          <span class="rank-row__label">+15 outras categorias</span>
+          <div class="rank-row__track"><div class="rank-row__fill" data-w="34"></div></div>
+          <span class="rank-row__val">168</span>
+        </div>
+      </div>
+
+      <div class="rank-panel tilt" data-reveal="fade-up">
+        <div class="rank-panel__head">
+          <h3>Fornecedores por polo</h3>
+          <span>6 polos</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Galeria Pagé</span>
+          <div class="rank-row__track"><div class="rank-row__fill rank-row__fill--green" data-w="100"></div></div>
+          <span class="rank-row__val">287</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Total Brás</span>
+          <div class="rank-row__track"><div class="rank-row__fill rank-row__fill--green" data-w="89"></div></div>
+          <span class="rank-row__val">255</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Canindé</span>
+          <div class="rank-row__track"><div class="rank-row__fill rank-row__fill--green" data-w="67"></div></div>
+          <span class="rank-row__val">193</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">Porto Brás</span>
+          <div class="rank-row__track"><div class="rank-row__fill rank-row__fill--green" data-w="55"></div></div>
+          <span class="rank-row__val">157</span>
+        </div>
+        <div class="rank-row">
+          <span class="rank-row__label">All Brás</span>
+          <div class="rank-row__track"><div class="rank-row__fill rank-row__fill--green" data-w="37"></div></div>
+          <span class="rank-row__val">105</span>
+        </div>
+        <div class="rank-row rank-row--muted">
+          <span class="rank-row__label">O Melhor do Brás</span>
+          <div class="rank-row__track"><div class="rank-row__fill rank-row__fill--green" data-w="8"></div></div>
+          <span class="rank-row__val">22</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quality-strip" data-reveal="fade-up">
+      <div class="quality-chip"><div><strong class="grad-text">965</strong><span>fornecedores com link direto de WhatsApp</span></div></div>
+      <div class="quality-chip"><div><strong class="grad-text">940</strong><span>fornecedores com Instagram para checar antes de comprar</span></div></div>
+      <div class="quality-chip"><div><strong class="grad-text">0</strong><span>erros de fórmula — planilha recalculada e verificada</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPLORADOR — BASE COMPLETA (ao vivo) ===================== -->
+<section class="explorer" id="base" aria-label="Buscar fornecedores na base completa">
+  <div class="container">
+    <p class="eyebrow" data-reveal="fade-up">Sua base, ao vivo</p>
+    <h2 class="section-title" data-reveal="fade-up">Busque, filtre e <span class="grad-text">chame agora</span>.</h2>
+    <p class="explorer__sub" data-reveal="fade-up">Os 1.019 fornecedores da aba "Base Completa", prontos para consultar aqui — sem precisar abrir o Excel.</p>
+
+    <div class="explorer__panel" data-reveal="fade-up">
+      <div class="explorer__toolbar">
+        <label class="explorer__search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="fxSearch" placeholder="Buscar pelo nome da loja..." autocomplete="off">
+        </label>
+        <select id="fxCat" aria-label="Filtrar por categoria">
+          <option value="all">Todas as categorias</option>
+        </select>
+        <select id="fxPolo" aria-label="Filtrar por polo">
+          <option value="all">Todos os polos</option>
+        </select>
+        <label class="explorer__toggle">
+          <input type="checkbox" id="fxWpp">
+          Só com WhatsApp
+        </label>
+      </div>
+
+      <div class="explorer__meta">
+        <span id="fxCount">Carregando fornecedores…</span>
+        <button type="button" id="fxReset" class="explorer__reset">Limpar filtros</button>
+      </div>
+
+      <div class="explorer__tablewrap">
+        <table class="explorer__table">
+          <thead>
+            <tr><th>Loja</th><th>Categoria</th><th>Polo</th><th>WhatsApp</th><th>Instagram</th><th>Site</th></tr>
+          </thead>
+          <tbody id="fxBody">
+            <tr><td colspan="6" class="explorer__loading">Carregando a base completa…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="explorer__pagination">
+        <button type="button" id="fxPrev" aria-label="Página anterior">‹ Anterior</button>
+        <span id="fxPageInfo" class="mono">—</span>
+        <button type="button" id="fxNext" aria-label="Próxima página">Próxima ›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMO USAR EM 4 PASSOS ===================== -->
+<section class="resultados" aria-label="Como usar a base">
+  <div class="container">
+    <p class="eyebrow" data-reveal="fade-up">Do arquivo à primeira venda</p>
+    <h2 class="section-title" data-reveal="fade-up">4 passos entre abrir o Excel e <span class="grad-text">fechar com fornecedor</span>.</h2>
+
+    <div class="steps-row" data-reveal="fade-up">
+      <div class="step-card">
+        <h3>Escolha a categoria</h3>
+        <p>Vá em "Painel por Categoria" e veja onde há mais oferta para o seu nicho.</p>
+      </div>
+      <div class="step-card">
+        <h3>Filtre na Base Completa</h3>
+        <p>Use os filtros de cabeçalho para cruzar categoria + polo e montar sua lista do dia.</p>
+      </div>
+      <div class="step-card">
+        <h3>Chame no WhatsApp</h3>
+        <p>Clique no link direto, apresente-se e pergunte pedido mínimo e condições de atacado.</p>
+      </div>
+      <div class="step-card">
+        <h3>Confirme pelo Instagram</h3>
+        <p>Antes de pagar, confira fotos reais e avaliações de outros lojistas no perfil da loja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMPARAÇÃO ===================== -->
+<section class="comparacao" aria-label="Comparação com dado bruto">
+  <div class="container">
+    <p class="eyebrow" data-reveal="fade-up">Dado bruto x Base FORNIX</p>
+    <h2 class="section-title" data-reveal="fade-up">O mesmo dado, <span class="grad-text">duas experiências</span> diferentes.</h2>
+
+    <div class="table-wrap" data-reveal="fade-up">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">Critério</th>
+            <th scope="col" class="col-bad">Listas soltas dos sites dos shoppings</th>
+            <th scope="col" class="col-good">Base FORNIX</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Organização</th>
+            <td class="col-bad">6 arquivos separados, dezenas de abas por segmento</td>
+            <td class="col-good">1 arquivo único, 11 abas, tudo cruzado</td>
+          </tr>
+          <tr>
+            <th scope="row">Categorias</th>
+            <td class="col-bad">Mais de 130 nomes de segmento, cada um escrito diferente</td>
+            <td class="col-good">22 categorias limpas e padronizadas</td>
+          </tr>
+          <tr>
+            <th scope="row">Duplicidade</th>
+            <td class="col-bad">Mesma loja aparece em múltiplas planilhas</td>
+            <td class="col-good">1.019 fornecedores únicos, sem repetição</td>
+          </tr>
+          <tr>
+            <th scope="row">Contato</th>
+            <td class="col-bad">Você copia e cola número por número</td>
+            <td class="col-good">Link direto de WhatsApp e Instagram, um clique</td>
+          </tr>
+          <tr>
+            <th scope="row">Visão geral</th>
+            <td class="col-bad">Nenhum resumo — você conta linha por linha</td>
+            <td class="col-good">Painéis com fórmula mostrando onde há mais oferta</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOWNLOAD DA PLANILHA ===================== -->
+<section class="garantias" aria-label="Baixar a planilha completa">
+  <div class="container">
+    <p class="eyebrow" data-reveal="fade-up">Arquivo liberado</p>
+    <h2 class="section-title" data-reveal="fade-up">Prefere o Excel? <span class="grad-text">Baixe o arquivo completo</span>.</h2>
+    <p class="explorer__sub" data-reveal="fade-up">O buscador acima usa os mesmos dados desta planilha. Baixe para trabalhar offline, aplicar seus próprios filtros ou importar em outra ferramenta.</p>
+
+    <div class="download-card" data-reveal="fade-up" style="margin-top:32px;">
+      <div class="download-card__icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#2F5FFF" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6M9 13v5M9 18l-2.5-2.5M9 18l2.5-2.5" stroke="#2F5FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="download-card__body">
+        <strong>Fornix_Base_Mestra_Fornecedores.xlsx</strong>
+        <span>11 abas · 1.019 fornecedores · atualizado em 05/08/2026</span>
+      </div>
+      <a href="Fornix_Base_Mestra_Fornecedores.xlsx" download class="btn btn--primary" data-cta="download-produto">
+        <span>Baixar planilha</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v13M6 11l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq" id="faq" aria-label="Perguntas frequentes sobre a base">
+  <div class="container faq__inner">
+    <div data-reveal="fade-right">
+      <p class="eyebrow">Dúvidas sobre o arquivo</p>
+      <h2 class="section-title">Perguntas <span class="grad-text">sobre a base</span></h2>
+      <p class="faq__sub">Específicas sobre o formato, os dados e como manter tudo funcionando.</p>
+    </div>
+
+    <div class="accordion" data-reveal="fade-left">
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">Em qual formato recebo o arquivo?<span class="acc-icon">+</span></button>
+        <div class="acc-panel"><p>Um único arquivo .xlsx que abre no Excel, Google Sheets, Numbers ou LibreOffice, sem instalar nada.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">De onde vêm esses fornecedores?</button>
+        <div class="acc-panel"><p>Dos principais polos atacadistas do Brás — Shopping Total Brás, Galeria Pagé, Shopping Canindé, Porto Brás, All Brás e o diretório O Melhor do Brás — consolidados, limpos e sem duplicidade.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">Os painéis e totais atualizam sozinhos?</button>
+        <div class="acc-panel"><p>Sim. As abas "Painel por Categoria" e "Painel por Polo" usam fórmulas — se você adicionar ou remover uma linha na Base Completa, os números se recalculam.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">Todo fornecedor tem WhatsApp e Instagram?</button>
+        <div class="acc-panel"><p>94,7% da base tem link direto de WhatsApp e 92,2% tem Instagram. Quando um contato não está disponível, a célula fica em branco em vez de mostrar informação inventada.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">Posso filtrar por categoria e por polo ao mesmo tempo?</button>
+        <div class="acc-panel"><p>Sim. No buscador desta página você combina categoria, polo e busca por nome ao mesmo tempo — e na aba "Base Completa" do Excel cada coluna também tem filtro próprio.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">Preciso estar logado para ver o buscador?</button>
+        <div class="acc-panel"><p>Não. Esta página é o seu acesso — guarde o link ou adicione aos favoritos para consultar sempre que precisar.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false">Posso reenviar ou revender a planilha?</button>
+        <div class="acc-panel"><p>A base é para seu uso comercial de compra e revenda. Redistribuir o arquivo completo para terceiros não é autorizado.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÚLTIMA CHAMADA ===================== -->
+<section class="final" id="final" aria-label="Chamada final">
+  <div class="hero__grid hero__grid--dark" aria-hidden="true"></div>
+  <div class="container final__inner" data-reveal="fade-up">
+    <h2 class="final__title">1.019 fornecedores. Zero tempo perdido <span class="grad-text">organizando planilha</span>.</h2>
+    <p class="final__text">Sua Base FORNIX está liberada. Guarde esta página nos favoritos e volte sempre que precisar buscar um fornecedor novo.</p>
+    <a href="#base" class="btn btn--primary btn--lg" data-cta="final-buscar">
+      <span>Voltar para a busca</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <p class="final__hint">Dúvidas sobre a base? Veja as perguntas frequentes acima.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span>FORNIX</span>
+      <p>Base de fornecedores para quem quer comprar direto e vender mais.</p>
+    </div>
+    <nav class="footer__links" aria-label="Links do rodapé">
+      <a href="#base">Buscar fornecedores</a>
+      <a href="#abas">Abas da planilha</a>
+      <a href="#faq">Perguntas</a>
+      <a href="index.html">Página inicial FORNIX</a>
+    </nav>
+  </div>
+  <div class="container footer__bottom">
+    <p>© 2026 FORNIX. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script>
+  // Anima as barras do painel de ranking ao entrar na viewport (reaproveita o padrão de reveal do script.js)
+  (function () {
+    var bars = document.querySelectorAll(".rank-row__fill");
+    if (!("IntersectionObserver" in window) || !bars.length) {
+      bars.forEach(function (b) { b.style.width = (b.getAttribute("data-w") || 0) + "%"; });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var panel = entry.target;
+        panel.querySelectorAll(".rank-row__fill").forEach(function (b, i) {
+          setTimeout(function () { b.style.width = (b.getAttribute("data-w") || 0) + "%"; }, i * 90);
+        });
+        obs.unobserve(panel);
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll(".rank-panel").forEach(function (p) { obs.observe(p); });
+  })();
+</script>
+<script>
+  /* ==========================================================================
+     FORNIX — explorador da Base Completa (busca + filtros + paginação)
+     Roda 100% no navegador sobre window.FORNIX_DATA (gerado a partir do .xlsx).
+     ========================================================================== */
+  (function () {
+    "use strict";
+
+    var DATA = window.FORNIX_DATA || [];
+    var PER_PAGE = 25;
+
+    var els = {
+      search: document.getElementById("fxSearch"),
+      cat: document.getElementById("fxCat"),
+      polo: document.getElementById("fxPolo"),
+      wpp: document.getElementById("fxWpp"),
+      reset: document.getElementById("fxReset"),
+      count: document.getElementById("fxCount"),
+      body: document.getElementById("fxBody"),
+      prev: document.getElementById("fxPrev"),
+      next: document.getElementById("fxNext"),
+      pageInfo: document.getElementById("fxPageInfo")
+    };
+
+    if (!els.body) return; // seção não presente nesta página
+
+    var state = { q: "", cat: "all", polo: "all", wppOnly: false, page: 1 };
+    var filtered = DATA;
+
+    function normalize(str) {
+      return (str || "")
+        .toString()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function uniqueSorted(arr) {
+      return Array.from(new Set(arr.filter(Boolean))).sort(function (a, b) {
+        return a.localeCompare(b, "pt-BR");
+      });
+    }
+
+    function populateSelect(select, values) {
+      values.forEach(function (v) {
+        var opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        select.appendChild(opt);
+      });
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement("div");
+      div.textContent = str == null ? "" : str;
+      return div.innerHTML;
+    }
+
+    function applyFilters() {
+      var q = normalize(state.q);
+      filtered = DATA.filter(function (r) {
+        if (state.cat !== "all" && r.cat !== state.cat) return false;
+        if (state.polo !== "all" && r.polo !== state.polo) return false;
+        if (state.wppOnly && !r.wpp) return false;
+        if (q && normalize(r.loja).indexOf(q) === -1) return false;
+        return true;
+      });
+      state.page = 1;
+      render();
+    }
+
+    function totalPages() {
+      return Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+    }
+
+    function renderRows() {
+      var start = (state.page - 1) * PER_PAGE;
+      var pageItems = filtered.slice(start, start + PER_PAGE);
+
+      if (!pageItems.length) {
+        els.body.innerHTML = '<tr><td colspan="6" class="explorer__empty">Nenhum fornecedor encontrado com esses filtros. Tente ajustar a busca.</td></tr>';
+        return;
+      }
+
+      var html = pageItems.map(function (r) {
+        var wpp = r.wpp
+          ? '<a class="pill pill--wpp" href="' + escapeHtml(r.wpp) + '" target="_blank" rel="noopener">Abrir WhatsApp</a>'
+          : '<span class="pill pill--muted">—</span>';
+        var insta = r.insta
+          ? '<a class="pill pill--insta" href="' + escapeHtml(r.insta) + '" target="_blank" rel="noopener">' + escapeHtml(r.insta_h || "Instagram") + '</a>'
+          : '<span class="pill pill--muted">—</span>';
+        var site = r.site
+          ? '<a class="pill pill--muted" href="' + escapeHtml(r.site) + '" target="_blank" rel="noopener">Ver loja</a>'
+          : '<span class="pill pill--muted">—</span>';
+
+        return "<tr>" +
+          "<td><strong>" + escapeHtml(r.loja) + "</strong></td>" +
+          "<td>" + escapeHtml(r.cat) + "</td>" +
+          "<td>" + escapeHtml(r.polo) + "</td>" +
+          "<td>" + wpp + "</td>" +
+          "<td>" + insta + "</td>" +
+          "<td>" + site + "</td>" +
+          "</tr>";
+      }).join("");
+
+      els.body.innerHTML = html;
+    }
+
+    function render() {
+      renderRows();
+      var total = filtered.length;
+      els.count.textContent = total.toLocaleString("pt-BR") + (total === 1 ? " fornecedor encontrado" : " fornecedores encontrados") +
+        (total !== DATA.length ? " de " + DATA.length.toLocaleString("pt-BR") : "");
+      els.pageInfo.textContent = "Página " + state.page + " de " + totalPages();
+      els.prev.disabled = state.page <= 1;
+      els.next.disabled = state.page >= totalPages();
+    }
+
+    function debounce(fn, wait) {
+      var t;
+      return function () {
+        var args = arguments;
+        clearTimeout(t);
+        t = setTimeout(function () { fn.apply(null, args); }, wait);
+      };
+    }
+
+    function init() {
+      if (!DATA.length) {
+        els.count.textContent = "Não foi possível carregar os dados.";
+        els.body.innerHTML = '<tr><td colspan="6" class="explorer__empty">Recarregue a página para tentar novamente.</td></tr>';
+        return;
+      }
+
+      populateSelect(els.cat, uniqueSorted(DATA.map(function (r) { return r.cat; })));
+      populateSelect(els.polo, uniqueSorted(DATA.map(function (r) { return r.polo; })));
+
+      els.search.addEventListener("input", debounce(function (e) {
+        state.q = e.target.value;
+        applyFilters();
+      }, 180));
+
+      els.cat.addEventListener("change", function (e) { state.cat = e.target.value; applyFilters(); });
+      els.polo.addEventListener("change", function (e) { state.polo = e.target.value; applyFilters(); });
+      els.wpp.addEventListener("change", function (e) { state.wppOnly = e.target.checked; applyFilters(); });
+
+      els.reset.addEventListener("click", function () {
+        state = { q: "", cat: "all", polo: "all", wppOnly: false, page: 1 };
+        els.search.value = "";
+        els.cat.value = "all";
+        els.polo.value = "all";
+        els.wpp.checked = false;
+        applyFilters();
+      });
+
+      els.prev.addEventListener("click", function () {
+        if (state.page > 1) { state.page--; render(); els.body.closest(".explorer__panel").scrollIntoView({ behavior: "smooth", block: "start" }); }
+      });
+      els.next.addEventListener("click", function () {
+        if (state.page < totalPages()) { state.page++; render(); els.body.closest(".explorer__panel").scrollIntoView({ behavior: "smooth", block: "start" }); }
+      });
+
+      filtered = DATA;
+      render();
+    }
+
+    init();
+  })();
+</script>
+</body>
+</html>
